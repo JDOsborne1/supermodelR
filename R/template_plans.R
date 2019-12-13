@@ -8,9 +8,43 @@
 #' @examples
 smGenerateModellingPlan <- function(){
         drake::drake_plan(
-                initial = 2
-                , initial_2 = 2
-                , out = initial * 2
+
+
+# Data Import and Pre-Processing ------------------------------------------
+                source_data = datasets::iris
+
+                , source_data_training = sample_frac(iris, size = 0.7)
+
+                , source_data_test = anti_join(source_data, source_data_training)
+
+                , pre_proc_recipe = recipe(
+                        Sepal.Length ~ .
+                        , data = source_data_training
+                        ) %>%
+                        step_dummy(
+                                Species
+                                , one_hot = TRUE
+                                ) %>%
+                        step_center(
+                                everything()
+                                ) %>%
+                        step_scale(
+                                everything()
+                                )  %>%
+                        check_missing(
+                                everything()
+                                )
+
+                , prepped_data = prep(
+                        pre_proc_recipe
+                        , training = source_data_training
+                        , retain = T
+                        )
+
+                , pre_processed_data = juice(prepped_data)
+
+                , pre_processes_new_data = bake(prepped_data, new_data = source_data_test)
+
         )
 
         }
