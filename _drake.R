@@ -11,7 +11,7 @@ parsnip_models_lm = c(
         #, "spark"
         #, "keras"
         , "stan"
-        , "glmnet"
+        #, "glmnet"
         )
 
 smGenerateModellingPlan() %>%
