@@ -1,0 +1,30 @@
+---
+title: "template_plans"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{template_plans}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(supermodelR)
+library(drake)
+```
+
+
+```{r}
+
+multiple_model_plan <- drake_plan(
+        inaugural_value = 5
+)
+
+```
+
