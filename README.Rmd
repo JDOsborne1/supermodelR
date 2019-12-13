@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/JDOsborne1/supermodelR.svg?branch=master)](https://travis-ci.org/JDOsborne1/supermodelR)
+[![Codecov test coverage](https://codecov.io/gh/JDOsborne1/supermodelR/branch/master/graph/badge.svg)](https://codecov.io/gh/JDOsborne1/supermodelR?branch=master)
 <!-- badges: end -->
 
 
