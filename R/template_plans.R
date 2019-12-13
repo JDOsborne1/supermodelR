@@ -55,11 +55,25 @@ smGenerateModellingPlan <- function(){
                         ,
                         transform =  map(engine = !!parsnip_models_lm)
                 )
+
                 , parsnip_lm_trained = target(
                         fit(parsnip_lm
                             ,  formula = Sepal.Length ~ .
                             ,  data = pre_processed_data)
                         , transform = map(parsnip_lm)
+                )
+
+                , parsnip_lm_predictions = target(
+                        predict(
+                                parsnip_lm_trained
+                                , new_data = pre_processed_new_data
+                        )
+                        , transform = map(parsnip_lm_trained)
+                )
+                , parsnip_lm_outcomes = target(
+                        cbind(pre_processed_new_data, parsnip_lm_predictions) %>%
+                                mutate(diffs = Sepal.Length - .pred)
+                        , transform = map(parsnip_lm_predictions)
                 )
 )
 
