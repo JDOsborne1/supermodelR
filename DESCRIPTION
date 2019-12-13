@@ -13,5 +13,5 @@ License: Apache License (>= 2.0)
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr
