@@ -43,7 +43,7 @@ smGenerateModellingPlan <- function(){
 
                 , pre_processed_data = juice(prepped_data)
 
-                , pre_processes_new_data = bake(prepped_data, new_data = source_data_test)
+                , pre_processed_new_data = bake(prepped_data, new_data = source_data_test)
 
 
 # Multiple Model Training -------------------------------------------------
