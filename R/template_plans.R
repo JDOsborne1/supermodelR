@@ -45,7 +45,23 @@ smGenerateModellingPlan <- function(){
 
                 , pre_processes_new_data = bake(prepped_data, new_data = source_data_test)
 
-        )
+
+# Multiple Model Training -------------------------------------------------
+
+
+
+                , parsnip_lm = target(
+                       set_engine( linear_reg(), engine)
+                        ,
+                        transform =  map(engine = !!parsnip_models_lm)
+                )
+                , parsnip_lm_trained = target(
+                        fit(parsnip_lm
+                            ,  formula = Sepal.Length ~ .
+                            ,  data = pre_processed_data)
+                        , transform = map(parsnip_lm)
+                )
+)
 
         }
 
