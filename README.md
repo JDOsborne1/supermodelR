@@ -35,3 +35,9 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("JDOsborne1/supermodelR")
 ```
+
+## Book-keeping
+
+Please note that the ‘supermodelR’ project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
+this project, you agree to abide by its terms.
