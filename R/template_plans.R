@@ -51,7 +51,7 @@ smGenerateModellingPlan <- function(){
 
 
                 , parsnip_lm = target(
-                       set_engine( linear_reg(), engine)
+                       set_engine( linear_reg(mixture = 0, penalty = 0.1), engine)
                         ,
                         transform =  map(engine = !!parsnip_models_lm)
                 )
