@@ -75,6 +75,16 @@ smGenerateModellingPlan <- function(){
                                 mutate(diffs = Sepal.Length - .pred)
                         , transform = map(parsnip_lm_predictions)
                 )
+
+                , all_outcomes = target(
+                        parsnip_lm_outcomes
+                        , transform = combine(parsnip_lm_outcomes)
+                )
+
+
+# Metric generation -------------------------------------------------------
+
+
 )
 
         }
