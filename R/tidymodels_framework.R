@@ -41,8 +41,28 @@ smTidymodelsPreditions <- function(.data, .target, .metrics = c("RMSE", "LLoss")
 
         ##### Model Training ######
 
+        rand_forest_engine <-
+                rand_forest(mode = "classification") %>%
+                set_engine(
+                        "randomForest"
+                        )
 
+        rand_forest_workflow <-
+                workflow() %>%
+                add_recipe(core_recipe) %>%
+                add_model( rand_forest_engine) %>%
+                fit(
+                        data = training(split_data)
+                )
 
+        rand_forest_pred <-
+                predict(
+                        rand_forest_workflow
+                        , new_data = testing(split_data)
+                ) %>%
+                bind_cols(
+                        testing(split_data)
+                )
 
 
 
