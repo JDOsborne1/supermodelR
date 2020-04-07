@@ -64,11 +64,24 @@ smTidymodelsPreditions <- function(.data, .target, .metrics = c("RMSE", "LLoss")
                         testing(split_data)
                 )
 
+        ##### Model Accuracy #####
 
+        rand_forest_accuracy <-
+                rand_forest_pred %>%
+                accuracy(
+                        Species
+                        , .pred_class
+                )
 
         ##### Output ######
 
-        output <- list("test_set" = testing_data, "training_set" = training_data)
+        output <- list(
+                "test_set" = testing_data
+                , "training_set" = training_data
+                , "workflow" = rand_forest_workflow
+                , "predictions" = rand_forest_pred
+                , "metrics" = rand_forest_accuracy
+                )
 
         output
 
